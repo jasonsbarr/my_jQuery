@@ -60,6 +60,12 @@
     makeArray: function(arr) {
       return isArrayLike(arr) ? [...arr] : false;
     },
+    /**
+     * Bind context to function so it can be invoked in the context of another object
+     * 
+     * @param {Function} fn the function to proxy
+     * @param {Object} context the object to apply as this
+     */
     proxy: function(fn, context) {
       return function() {
         return fn.apply(context, [...arguments]);
