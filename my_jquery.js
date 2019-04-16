@@ -14,9 +14,9 @@
    */
   $.extend = function(target, object) {
     // Check if object is Array
-    const objectIsArray = Object.prototype.toString.call(object) !== '[object Array]';
+    const objectIsArray = Object.prototype.toString.call(object) === '[object Array]';
     for (var prop in object) {
-      if (typeof object[prop] !== "object" && !isArray(object)) {
+      if (typeof object[prop] !== "object" && !objectIsArray) {
         target[prop] = object[prop];
       } else if (objectIsArray) {
         target[prop] = [...object[prop]];
