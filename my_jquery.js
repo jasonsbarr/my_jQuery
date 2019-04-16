@@ -16,16 +16,8 @@
     // Check if object is Array
     const objectIsArray = Object.prototype.toString.call(object) === '[object Array]';
     for (var prop in object) {
-      if (typeof object[prop] !== "object" && !objectIsArray) {
+      if (object.hasOwnProperty(prop)) {
         target[prop] = object[prop];
-      } else if (objectIsArray) {
-        target[prop] = [...object[prop]];
-        // check each array element for arrays and objects
-        target[prop].forEach(elem => {
-          if (typeof elem === "object") return $.extend(elem);
-        });
-      } else {
-        return $.extend(prop, object[prop]);
       }
 
       return target;
