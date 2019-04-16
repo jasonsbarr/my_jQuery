@@ -6,6 +6,8 @@
    * and objects. Recursive deep copy for objects, clone arrays. For objects
    * containing built-in JS objects use library method, e.g. _.deepCopy().
    * 
+   * Merge object into target object with recursive deep copy.
+   * 
    * @param {Object} target   Object to be merged into
    * @param {Object} object   Object to merge into target
    * @return {Object}   Target object with merged properties
