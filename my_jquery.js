@@ -14,10 +14,11 @@
    */
   $.extend = function(target, object) {
     for (var prop in object) {
-      if (typeof object[prop] !== "object") {
+      if (typeof object[prop] !== "object" && !$.isArray(object)) {
         target[prop] = object[prop];
-      } else if (typeof object[prop] === "object" && object[prop] instanceof Array) {
+      } else if (this.isArray(object[prop])) {
         target[prop] = [...object[prop]];
+        // check each array element for arrays and objects
         target[prop].forEach(elem => {
           if (typeof elem === "object") return $.extend(elem);
         });
