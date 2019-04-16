@@ -53,7 +53,15 @@
       }
       return collection;
     },
-    makeArray: function(arr) {},
+    /**
+     * Takes array-like object and returns an array with the same elements
+     * 
+     * @param {Object} arr  an array-like object
+     * @return {Array} array
+     */
+    makeArray: function(arr) {
+      return isArrayLike(arr) ? [...arr] : false;
+    },
     proxy: function(fn, context) {}
   });
 
