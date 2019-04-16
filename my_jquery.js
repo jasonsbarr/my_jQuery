@@ -1,6 +1,14 @@
 (function() {
   $ = function(selector) {};
 
+  /**
+   * Copy properties from object into target. Only works with primitives,
+   * arrays, and objects. Recursive deep copy for objects, clone arrays.
+   * 
+   * @param {Object} target   Object to be merged into
+   * @param {Object} object   Object to merge into target
+   * @return {Object}   target object with merged properties
+   */
   $.extend = function(target, object) {
     for (var prop in object) {
       if (typeof object[prop] !== "object") {
