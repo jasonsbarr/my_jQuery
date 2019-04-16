@@ -1,4 +1,10 @@
 (function() {
+  /**
+   * Create $ object as a wrapper for DOM elements
+   * 
+   * @param {String} selector CSS selector
+   * @return {Object}
+   */
   $ = function(selector) {
     if (typeof selector === "string") {
       const elements = document.querySelectorAll(selector);
