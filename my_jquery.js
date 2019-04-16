@@ -27,7 +27,8 @@
 
   // Static methods
   var isArrayLike = function(obj) {
-    return !!obj.length && typeof obj.length === 'number' && obj[length - 1] in obj;
+    return !!obj.length && typeof obj.length === 'number' && obj[length - 1] in obj ||
+      typeof obj.length === 'number' && obj.length === 0;
   };
 
   $.extend($, {
