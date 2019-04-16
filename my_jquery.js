@@ -31,7 +31,9 @@
   };
 
   // Static methods
-  var isArrayLike = function(obj) {};
+  var isArrayLike = function(obj) {
+    return !!obj.length && obj[length - 1] in obj;
+  };
 
   $.extend($, {
     isArray: function(obj) {
