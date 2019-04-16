@@ -1,5 +1,17 @@
 (function() {
-  $ = function(selector) {};
+  $ = function(selector) {
+    if (typeof selector === "string") {
+      const elements = document.querySelectorAll(selector);
+
+      this.length = 0;
+
+      Array.prototype.push.apply(this, elements);
+
+      this.length = elements.length;
+    }
+
+    return this;
+  };
 
   /**
    * Copy properties from object into target. Only works with primitives, arrays,
