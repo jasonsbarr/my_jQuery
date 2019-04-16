@@ -19,8 +19,6 @@
         target[prop] = object[prop];
       } else if (Object.prototype.toString.call(object[prop]) === '[object Array]') {
         target[prop] = [...object[prop]];
-      } else if (objectIsArray) {
-        target[prop] = [...object];
       } else {
         return $.extend(prop, object[prop]);
       }
