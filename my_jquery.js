@@ -32,6 +32,12 @@
   };
 
   $.extend($, {
+    /**
+     * Check if object is array
+     * 
+     * @param {Object} obj object to check if is array
+     * @return {Boolean}
+     */
     isArray: function(obj) {
       return Object.prototype.toString.call(obj) === '[object Array]';
     },
