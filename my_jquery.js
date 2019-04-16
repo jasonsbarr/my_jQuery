@@ -35,6 +35,14 @@
     isArray: function(obj) {
       return Object.prototype.toString.call(obj) === '[object Array]';
     },
+    /**
+     * Iterate over an object or array and apply a function to transform each element
+     * 
+     * @param {Object|Array} collection object or array to iterate over
+     * @param {Function} cb function to transform each element of collection
+     * @return {Object|Array} transformed object or array
+     */
+    // TODO: operate on copy of object/array instead of mutating original
     each: function(collection, cb) {
       if (isArrayLike(collection)) {
         for (let i = 0; i < collection.length; i++) {
