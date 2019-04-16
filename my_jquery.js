@@ -18,6 +18,9 @@
         target[prop] = object[prop];
       } else if (typeof object[prop] === "object" && object[prop] instanceof Array) {
         target[prop] = [...object[prop]];
+        target[prop].forEach(elem => {
+          if (typeof elem === "object") return $.extend(elem);
+        });
       } else {
         return $.extend(prop, object[prop]);
       }
