@@ -22,6 +22,7 @@
 
       return target;
     }
+    return target;
   };
 
   // Static methods
