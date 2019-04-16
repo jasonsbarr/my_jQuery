@@ -27,6 +27,12 @@
   };
 
   // Static methods
+  /**
+   * Check if object is array-like
+   * 
+   * @param {Object} obj object to check
+   * @return {Boolean}
+   */
   var isArrayLike = function(obj) {
     return typeof obj.length === 'number' && obj.length - 1 in obj;
   };
