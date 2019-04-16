@@ -30,7 +30,22 @@
     isArray: function(obj) {
       return Object.prototype.toString.call(obj) === '[object Array]';
     },
-    each: function(collection, cb) {},
+    each: function(collection, cb) {
+      if (isArrayLike(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+          let value = collection[i];
+          cb.call(value, i, value);
+        }
+      } else {
+        for (let prop in collection) {
+          if (collection.hasOwnProperty(prop)) {
+            let value = collection[prop]
+            cb.call(value, prop, value);
+          }
+        }
+      }
+      return collection;
+    },
     makeArray: function(arr) {},
     proxy: function(fn, context) {}
   });
