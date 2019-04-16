@@ -60,7 +60,11 @@
     makeArray: function(arr) {
       return isArrayLike(arr) ? [...arr] : false;
     },
-    proxy: function(fn, context) {}
+    proxy: function(fn, context) {
+      return function() {
+        return fn.apply(context, [...arguments]);
+      }
+    }
   });
 
   $.extend($.prototype, {
