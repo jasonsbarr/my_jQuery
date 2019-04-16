@@ -33,7 +33,9 @@
   var isArrayLike = function(obj) {};
 
   $.extend($, {
-    isArray: function(obj) {},
+    isArray: function(obj) {
+      return Object.prototype.toString.call(obj) === '[object Array]';
+    },
     each: function(collection, cb) {},
     makeArray: function(arr) {},
     proxy: function(fn, context) {}
