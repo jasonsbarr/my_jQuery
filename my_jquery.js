@@ -31,14 +31,13 @@
    * @return {Object}   Target object with merged properties
    */
   $.extend = function(target, object) {
-    const objectIsArray = Object.prototype.toString.call(object) === '[object Array]';
     for (var prop in object) {
       if (typeof object[prop] !== 'object' && object.hasOwnProperty(prop)) {
         target[prop] = object[prop];
       } else if (Object.prototype.toString.call(object[prop]) === '[object Array]') {
         target[prop] = [...object[prop]];
       } else {
-        return $.extend(prop, object[prop]);
+        return $.extend(target[prop], object[prop]);
       }
     }
     return target;
