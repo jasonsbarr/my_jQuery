@@ -112,7 +112,7 @@
     html: function(newHtml) {
       if (!newHtml) return this[0].innerHTML;
 
-      return $.each(this, (i, el) => el.innerHTML = newHtml);
+      return $.each(this, (_, el) => el.innerHTML = newHtml);
     },
     val: function(newVal) {
       if (!newVal) return this[0].value;
