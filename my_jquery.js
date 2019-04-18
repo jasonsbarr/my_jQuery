@@ -113,9 +113,8 @@
   const getText = function(el) {
     let txt = '';
     $.each(el.childNodes, (_, child) => {
-      txt += (child.nodeType === Node.TEXT_NODE) ?
-        child.nodeValue :
-        getText(child) || '';
+      txt += (child.nodeType === Node.TEXT_NODE) ? child.nodeValue :
+        (child.nodeType === Node.ELEMENT_NODE) ? getText(child) : '';
     });
     return txt;
   };
