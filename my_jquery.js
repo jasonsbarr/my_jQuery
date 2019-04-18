@@ -114,7 +114,11 @@
 
       return $.each(this, (i, el) => el.innerHTML = newHtml);
     },
-    val: function(newVal) {},
+    val: function(newVal) {
+      if (!newVal) return this[0].value;
+
+      return $.each(this, (_, input) => input.value = newVal);
+    },
     text: function(newText) {},
     find: function(selector) {},
     next: function() {},
