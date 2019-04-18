@@ -6,15 +6,13 @@
    * @return {Object}
    */
   $ = function(selector) {
-    if (typeof selector === "string") {
-      const elements = document.querySelectorAll(selector);
+    const elements = document.querySelectorAll(selector);
 
-      this.length = 0;
+    this.length = 0;
 
-      Array.prototype.push.apply(this, elements);
+    Array.prototype.push.apply(this, elements);
 
-      this.length = elements.length;
-    }
+    this.length = elements.length;
 
     return this;
   };
@@ -111,7 +109,11 @@
   });
 
   $.extend($.prototype, {
-    html: function(newHtml) {},
+    html: function(newHtml) {
+      if (!newHtml) return this[0].innerHTML;
+
+      return $.each(this, (i, el) => el.innerHTML = newHtml);
+    },
     val: function(newVal) {},
     text: function(newText) {},
     find: function(selector) {},
