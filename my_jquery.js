@@ -6,6 +6,8 @@
    * @return {Object}
    */
   $ = function(selector) {
+    if (!(this instanceof $)) return new $(selector);
+
     const elements = document.querySelectorAll(selector);
 
     this.length = 0;
@@ -108,18 +110,37 @@
     }
   });
 
+  const getText = function(el) {
+    let txt = '';
+    $.each(el.childNodes, (_, child) => {
+      txt += (child.nodeType === Node.TEXT_NODE) ?
+        child.nodeValue :
+        getText(child) || '';
+    });
+    return txt;
+  };
+
   $.extend($.prototype, {
     html: function(newHtml) {
-      if (!newHtml) return this[0].innerHTML;
+      if (!arguments.length) return this[0] && this[0].innerHTML;
 
       return $.each(this, (_, el) => el.innerHTML = newHtml);
     },
     val: function(newVal) {
-      if (!newVal) return this[0].value;
+      if (!arguments.length) return this[0] && this[0].value;
 
       return $.each(this, (_, input) => input.value = newVal);
     },
-    text: function(newText) {},
+    text: function(newText) {
+      if(arguments.length) {
+        this.html('');
+        return $.each(this, (_, el) => {
+          el.textContent = newText;
+        });
+      } else {
+        return this[0] && getText(this[0]);
+      }
+    },
     find: function(selector) {},
     next: function() {},
     prev: function() {},
