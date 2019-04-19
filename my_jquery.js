@@ -12,8 +12,8 @@
      * @constant
      * @type {NodeList|Array}
      */
-    const elements = (typeof selector === 'string') ?
-      document.querySelectorAll(selector) : selector;
+    const elements = (typeof selector === 'string' && selector !== '') ?
+      document.querySelectorAll(selector) : selector || [];
 
     this.length = 0;
     Array.prototype.push.apply(this, elements);
