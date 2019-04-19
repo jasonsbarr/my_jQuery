@@ -162,7 +162,21 @@
 
       return $(elements);
     },
-    next: function() {},
+    /**
+     * Get next sibling element of all elements in the collection
+     *
+     * @returns {Object}
+     */
+    next: function() {
+      /**
+       * @constant {Array} elements
+       */
+      const elements = [];
+
+      $.each(this, (_, el) => elements.push(el.nextElementSibling));
+
+      return $(elements);
+    },
     prev: function() {},
     parent: function() {},
     children: function() {},
