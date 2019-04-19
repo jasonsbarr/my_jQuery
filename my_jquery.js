@@ -157,7 +157,7 @@
        */
       const elements = [];
       $.each(this, (_, el) => {
-        elements.push(...[...el.querySelectorAll(selector)]);
+        elements.push(...el.querySelectorAll(selector));
       });
 
       return $(elements);
