@@ -105,6 +105,7 @@
      * 
      * @param {Function} fn the function to proxy
      * @param {Object} context the object to apply as this
+     * @return {Function}
      */
     proxy: function(fn, context) {
       return function() {
