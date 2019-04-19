@@ -144,7 +144,24 @@
         return this[0] && getText(this[0]);
       }
     },
-    find: function(selector) {},
+    /**
+     * Finds all child elements within the current selection that match selector
+     *
+     * @param {String} selector CSS selector string
+     * @returns {Object}
+     */
+    find: function(selector) {
+      /**
+       * @constant
+       * @type {Array}
+       */
+      const elements = [];
+      $.each(this, (_, el) => {
+        elements.push(...[...el.querySelectorAll(selector)]);
+      });
+
+      return $(elements);
+    },
     next: function() {},
     prev: function() {},
     parent: function() {},
