@@ -173,7 +173,9 @@
        */
       const elements = [];
 
-      $.each(this, (_, el) => elements.push(el.nextElementSibling));
+      $.each(this, (_, el) => {
+        if (el.nextElementSibling) elements.push(el.nextElementSibling);
+      });
 
       return $(elements);
     },
