@@ -2,19 +2,18 @@
   /**
    * Create $ object as a wrapper for DOM elements
    * 
-   * @param {String} selector CSS selector
+   * @param {String|Array} selector CSS selector or array of Nodes
    * @return {Object}
    */
   $ = function(selector) {
     if (!(this instanceof $)) return new $(selector);
 
-    const elements = document.querySelectorAll(selector);
-
-    this.length = 0;
-
-    Array.prototype.push.apply(this, elements);
-
-    this.length = elements.length;
+    if (typeof selector === 'string') {
+      const elements = document.querySelectorAll(selector);
+      this.length = 0;
+      Array.prototype.push.apply(this, elements);
+      this.length = elements.length;
+    }
 
     return this;
   };
