@@ -8,12 +8,12 @@
   $ = function(selector) {
     if (!(this instanceof $)) return new $(selector);
 
-    if (typeof selector === 'string') {
-      const elements = document.querySelectorAll(selector);
-      this.length = 0;
-      Array.prototype.push.apply(this, elements);
-      this.length = elements.length;
-    }
+    const elements = (typeof selector === 'string') ?
+      document.querySelectorAll(selector) : selector;
+
+    this.length = 0;
+    Array.prototype.push.apply(this, elements);
+    this.length = elements.length;
 
     return this;
   };
