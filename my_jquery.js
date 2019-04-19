@@ -8,6 +8,10 @@
   $ = function(selector) {
     if (!(this instanceof $)) return new $(selector);
 
+    /**
+     * @constant
+     * @type {NodeList|Array}
+     */
     const elements = (typeof selector === 'string') ?
       document.querySelectorAll(selector) : selector;
 
